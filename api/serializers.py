@@ -1,56 +1,121 @@
 from rest_framework import serializers
 from .models import Utilisateur, Agriculteur, Acheteur, Produit, Commande, CommandeProduit, Paiement, Messagerie, Avis
 
-# Serializer for Utilisateur
-class UtilisateurSerializer(serializers.ModelSerializer):
+# Base Serializer for Utilisateur (used for create/update)
+class UtilisateurCreateUpdateSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)  # Make password write-only
+
     class Meta:
         model = Utilisateur
         fields = '__all__'
 
-# Serializer for Agriculteur
-class AgriculteurSerializer(serializers.ModelSerializer):
+# List Serializer for Utilisateur (used for listing)
+class UtilisateurListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Utilisateur
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Agriculteur (used for create/update)
+class AgriculteurCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Agriculteur
         fields = '__all__'
 
-# Serializer for Acheteur
-class AcheteurSerializer(serializers.ModelSerializer):
+# List Serializer for Agriculteur (used for listing)
+class AgriculteurListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Agriculteur
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Acheteur (used for create/update)
+class AcheteurCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Acheteur
         fields = '__all__'
 
-# Serializer for Produit
-class ProduitSerializer(serializers.ModelSerializer):
+# List Serializer for Acheteur (used for listing)
+class AcheteurListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Acheteur
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Produit (used for create/update)
+class ProduitCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produit
         fields = '__all__'
 
-# Serializer for Commande
-class CommandeSerializer(serializers.ModelSerializer):
+# List Serializer for Produit (used for listing)
+class ProduitListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Produit
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Commande (used for create/update)
+class CommandeCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Commande
         fields = '__all__'
 
-# Serializer for CommandeProduit
-class CommandeProduitSerializer(serializers.ModelSerializer):
+# List Serializer for Commande (used for listing)
+class CommandeListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Commande
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for CommandeProduit (used for create/update)
+class CommandeProduitCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = CommandeProduit
         fields = '__all__'
 
-# Serializer for Paiement
-class PaiementSerializer(serializers.ModelSerializer):
+# List Serializer for CommandeProduit (used for listing)
+class CommandeProduitListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommandeProduit
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Paiement (used for create/update)
+class PaiementCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Paiement
         fields = '__all__'
 
-# Serializer for Messagerie
-class MessagerieSerializer(serializers.ModelSerializer):
+# List Serializer for Paiement (used for listing)
+class PaiementListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Paiement
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Messagerie (used for create/update)
+class MessagerieCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Messagerie
         fields = '__all__'
 
-# Serializer for Avis
-class AvisSerializer(serializers.ModelSerializer):
+# List Serializer for Messagerie (used for listing)
+class MessagerieListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Messagerie
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships
+
+# Base Serializer for Avis (used for create/update)
+class AvisCreateUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Avis
         fields = '__all__'
+
+# List Serializer for Avis (used for listing)
+class AvisListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Avis
+        fields = '__all__'
+        depth = 1  # Apply depth=1 for nested relationships

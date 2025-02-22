@@ -1,48 +1,94 @@
 from rest_framework import viewsets
 from .models import Utilisateur, Agriculteur, Acheteur, Produit, Commande, CommandeProduit, Paiement, Messagerie, Avis
-from .serializers import UtilisateurSerializer, AgriculteurSerializer, AcheteurSerializer, ProduitSerializer, CommandeSerializer, CommandeProduitSerializer, PaiementSerializer, MessagerieSerializer, AvisSerializer
+from .serializers import (
+    UtilisateurCreateUpdateSerializer, UtilisateurListSerializer,
+    AgriculteurCreateUpdateSerializer, AgriculteurListSerializer,
+    AcheteurCreateUpdateSerializer, AcheteurListSerializer,
+    ProduitCreateUpdateSerializer, ProduitListSerializer,
+    CommandeCreateUpdateSerializer, CommandeListSerializer,
+    CommandeProduitCreateUpdateSerializer, CommandeProduitListSerializer,
+    PaiementCreateUpdateSerializer, PaiementListSerializer,
+    MessagerieCreateUpdateSerializer, MessagerieListSerializer,
+    AvisCreateUpdateSerializer, AvisListSerializer
+)
 
-# ViewSet for Utilisateur
+# Utilisateur ViewSet
 class UtilisateurViewSet(viewsets.ModelViewSet):
     queryset = Utilisateur.objects.all()
-    serializer_class = UtilisateurSerializer
 
-# ViewSet for Agriculteur
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return UtilisateurListSerializer
+        return UtilisateurCreateUpdateSerializer
+
+# Agriculteur ViewSet
 class AgriculteurViewSet(viewsets.ModelViewSet):
     queryset = Agriculteur.objects.all()
-    serializer_class = AgriculteurSerializer
 
-# ViewSet for Acheteur
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return AgriculteurListSerializer
+        return AgriculteurCreateUpdateSerializer
+
+# Acheteur ViewSet
 class AcheteurViewSet(viewsets.ModelViewSet):
     queryset = Acheteur.objects.all()
-    serializer_class = AcheteurSerializer
 
-# ViewSet for Produit
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return AcheteurListSerializer
+        return AcheteurCreateUpdateSerializer
+
+# Produit ViewSet
 class ProduitViewSet(viewsets.ModelViewSet):
     queryset = Produit.objects.all()
-    serializer_class = ProduitSerializer
 
-# ViewSet for Commande
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ProduitListSerializer
+        return ProduitCreateUpdateSerializer
+
+# Commande ViewSet
 class CommandeViewSet(viewsets.ModelViewSet):
     queryset = Commande.objects.all()
-    serializer_class = CommandeSerializer
 
-# ViewSet for CommandeProduit
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return CommandeListSerializer
+        return CommandeCreateUpdateSerializer
+
+# CommandeProduit ViewSet
 class CommandeProduitViewSet(viewsets.ModelViewSet):
     queryset = CommandeProduit.objects.all()
-    serializer_class = CommandeProduitSerializer
 
-# ViewSet for Paiement
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return CommandeProduitListSerializer
+        return CommandeProduitCreateUpdateSerializer
+
+# Paiement ViewSet
 class PaiementViewSet(viewsets.ModelViewSet):
     queryset = Paiement.objects.all()
-    serializer_class = PaiementSerializer
 
-# ViewSet for Messagerie
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return PaiementListSerializer
+        return PaiementCreateUpdateSerializer
+
+# Messagerie ViewSet
 class MessagerieViewSet(viewsets.ModelViewSet):
     queryset = Messagerie.objects.all()
-    serializer_class = MessagerieSerializer
 
-# ViewSet for Avis
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return MessagerieListSerializer
+        return MessagerieCreateUpdateSerializer
+
+# Avis ViewSet
 class AvisViewSet(viewsets.ModelViewSet):
     queryset = Avis.objects.all()
-    serializer_class = AvisSerializer
+
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return AvisListSerializer
+        return AvisCreateUpdateSerializer
