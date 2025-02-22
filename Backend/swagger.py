@@ -7,7 +7,6 @@ schema_view = get_schema_view(
         title="Farming Matket API",
         default_version='v1',
         description="We are helping agriculture farmers to have access to a  good online market",
-        terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="contact.agriculturemarket@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
