@@ -21,20 +21,20 @@ class UtilisateurTests(APITestCase):
         self.user = User.objects.create_user(**self.user_data)
 
     def test_create_utilisateur(self):
-        url = reverse('utilisateur-list')
+        url = reverse('utilisateurs-list')  # Updated to match the router URL
         response = self.client.post(url, self.user_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 2)  # One already exists from setUp
 
     def test_login_utilisateur(self):
-        url = reverse('login')  # Assuming you have a login endpoint
+        url = reverse('jwt-create')  # Updated to match Djoser's JWT login URL
         login_data = {
             'email': 'test@example.com',
             'password': 'testpassword123'
         }
         response = self.client.post(url, login_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertIn('token', response.data)  # Assuming your login returns a token
+        self.assertIn('access', response.data)  # JWT returns 'access' and 'refresh' tokens
 
 class AgriculteurTests(APITestCase):
     def setUp(self):
@@ -51,7 +51,7 @@ class AgriculteurTests(APITestCase):
 
     def test_publier_produit(self):
         self.client.force_authenticate(user=self.user)
-        url = reverse('produit-list')
+        url = reverse('produits-list')  # Updated to match the router URL
         produit_data = {
             'agriculteur': self.agriculteur.id,
             'nom': 'Tomates',
@@ -98,7 +98,7 @@ class AcheteurTests(APITestCase):
             categorie='Légumes'
         )
 
-        url = reverse('commande-list')
+        url = reverse('commandes-list')  # Updated to match the router URL
         commande_data = {
             'acheteur': self.acheteur.id,
             'produits': [produit.id],
@@ -130,7 +130,7 @@ class ProduitTests(APITestCase):
         )
 
     def test_list_produits(self):
-        url = reverse('produit-list')
+        url = reverse('produits-list')  # Updated to match the router URL
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
@@ -169,7 +169,7 @@ class CommandeTests(APITestCase):
 
     def test_valider_commande(self):
         self.client.force_authenticate(user=self.user)
-        url = reverse('commande-detail', args=[self.commande.id])
+        url = reverse('commandes-detail', args=[self.commande.id])  # Updated to match the router URL
         response = self.client.patch(url, {'statut': 'Confirmée'}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Commande.objects.get(id=self.commande.id).statut, 'Confirmée')
@@ -191,7 +191,7 @@ class PaiementTests(APITestCase):
 
     def test_effectuer_paiement(self):
         self.client.force_authenticate(user=self.user)
-        url = reverse('paiement-detail', args=[self.paiement.id])
+        url = reverse('paiements-detail', args=[self.paiement.id])  # Updated to match the router URL
         response = self.client.patch(url, {'statut': 'Validé'}, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(Paiement.objects.get(id=self.paiement.id).statut, 'Validé')
@@ -219,7 +219,7 @@ class MessagerieTests(APITestCase):
 
     def test_envoyer_message(self):
         self.client.force_authenticate(user=self.user1)
-        url = reverse('messagerie-list')
+        url = reverse('messagerie-list')  # Updated to match the router URL
         message_data = {
             'expediteur': self.user1.id,
             'destinataire': self.user2.id,
@@ -262,7 +262,7 @@ class AvisTests(APITestCase):
 
     def test_laisser_avis(self):
         self.client.force_authenticate(user=self.user)
-        url = reverse('avis-list')
+        url = reverse('avis-list')  # Updated to match the router URL
         avis_data = {
             'acheteur': self.acheteur.id,
             'produit': self.produit.id,
