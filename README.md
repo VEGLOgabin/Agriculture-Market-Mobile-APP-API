@@ -48,7 +48,8 @@ The API documentation is automatically generated using **drf-yasg** and is acces
 
 ### Swagger Page Preview
 
-![Swagger UI](path/to/your/swagger_image.png)  
+![Swagger UI](img1.png)  
+![Swagger UI](img2.png)  
 *Insert the Swagger UI screenshot here to showcase the interactive documentation.*
 
 To access the Swagger UI, run the development server and navigate to `/swagger/` or `/redoc/` in your browser.
