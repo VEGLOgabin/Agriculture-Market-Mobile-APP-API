@@ -1,4 +1,3 @@
-```markdown
 # Agricultural Marketplace API
 
 The **Agricultural Marketplace API** is a robust and scalable backend solution designed to facilitate the management of an online agricultural marketplace. This API enables farmers, buyers, and other stakeholders to interact seamlessly by providing features such as user management, product listing, order processing, payment handling, messaging, and review systems. Built with modern web development tools, this API ensures efficiency, security, and ease of use.
@@ -50,8 +49,8 @@ The API documentation is automatically generated using **drf-yasg** and is acces
 ### Swagger Page Preview
 
 ![Swagger UI](img1.png)  
-![Swagger UI](img2.png)  
- 
+![Swagger UI](img2.png)
+
 *Insert the Swagger UI screenshot here to showcase the interactive documentation.*
 
 To access the Swagger UI, run the development server and navigate to `/swagger/` or `/redoc/` in your browser.
@@ -61,31 +60,30 @@ To access the Swagger UI, run the development server and navigate to `/swagger/`
 ## Installation and Setup
 
 1. **Clone the Repository**:
-   ```bash
+ 
    git clone https://github.com/yourusername/agricultural-marketplace-api.git
-   cd agricultural-marketplace-api
-   ```
+   cd agricultural-marketplace-api  
 
 2. **Set Up a Virtual Environment**:
-   ```bash
+ 
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   ```
+   
 
 3. **Install Dependencies**:
-   ```bash
+  
    pip install -r requirements.txt
-   ```
+  
 
 4. **Run Migrations**:
-   ```bash
+  
    python manage.py migrate
-   ```
+   
 
 5. **Start the Development Server**:
-   ```bash
+   
    python manage.py runserver
-   ```
+  
 
 6. **Access the API**:
    - Open your browser and go to `http://127.0.0.1:8000/`.
@@ -127,4 +125,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For questions, suggestions, or support, please contact:  
 [VEGLO H. Gabin](https://github.com/VEGLOgabin)
-```
+
