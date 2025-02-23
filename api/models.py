@@ -100,7 +100,6 @@ class Acheteur(models.Model):
 
 # Produit model
 class Produit(models.Model):
-    # id_produit = models.AutoField(primary_key=True)
     agriculteur = models.ForeignKey(Agriculteur, on_delete=models.CASCADE, related_name='produits')
     nom = models.CharField(max_length=255)
     description = models.TextField()

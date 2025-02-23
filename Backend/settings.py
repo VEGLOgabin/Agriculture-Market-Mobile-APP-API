@@ -150,13 +150,25 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
+# DJOSER = {
+#     'USER_ID_FIELD': 'id',
+#     'LOGIN_FIELD': 'email',
+#     'SERIALIZERS': {
+#         'user_create': 'api.serializers.UtilisateurCreateUpdateSerializer',  # For user creation
+#         'user': 'api.serializers.UtilisateurListSerializer',  # For user retrieval (listing)
+#         'current_user': 'api.serializers.UtilisateurListSerializer',  # For the current user endpoint
+#     }
+# }
+
 DJOSER = {
-    'USER_ID_FIELD': 'id',
-    'LOGIN_FIELD': 'email',
+    'SEND_ACTIVATION_EMAIL': False,  
+    'USER_CREATE_PASSWORD_RETYPE': True, 
+    'SET_PASSWORD_RETYPE': True,  
+    'LOGOUT_ON_PASSWORD_CHANGE': True,  
     'SERIALIZERS': {
-        'user_create': 'api.serializers.UtilisateurCreateUpdateSerializer',  # For user creation
-        'user': 'api.serializers.UtilisateurListSerializer',  # For user retrieval (listing)
-        'current_user': 'api.serializers.UtilisateurListSerializer',  # For the current user endpoint
+        'user_create': 'api.serializers.UtilisateurCreateUpdateSerializer', 
+        'user': 'api.serializers.UtilisateurListSerializer', 
+        'current_user': 'api.serializers.UtilisateurListSerializer',  
     }
 }
 
@@ -165,6 +177,9 @@ AUTH_USER_MODEL = 'api.Utilisateur'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # Frontend base route
 ]
+
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_CREDENTIALS = True
 
 
 
