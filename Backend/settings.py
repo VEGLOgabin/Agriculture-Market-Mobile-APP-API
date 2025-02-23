@@ -150,15 +150,6 @@ SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
 
-# DJOSER = {
-#     'USER_ID_FIELD': 'id',
-#     'LOGIN_FIELD': 'email',
-#     'SERIALIZERS': {
-#         'user_create': 'api.serializers.UtilisateurCreateUpdateSerializer',  # For user creation
-#         'user': 'api.serializers.UtilisateurListSerializer',  # For user retrieval (listing)
-#         'current_user': 'api.serializers.UtilisateurListSerializer',  # For the current user endpoint
-#     }
-# }
 
 DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,  
