@@ -22,7 +22,7 @@ class UserManager(BaseUserManager):
             **kwargs
         )
         user.set_password(password)
-        user.save(using=self._db)
+        user.save()
         return user
         
 
