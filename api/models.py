@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,Permissi
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, first_name, last_name, password, email, telephone, adresse, **kwargs):
+    def create_user(self, first_name, last_name, password, email, telephone, adresse,is_active = True,  **kwargs):
         """
         Creates and saves a User with the given email and password.
         """
@@ -19,14 +19,15 @@ class UserManager(BaseUserManager):
             adresse=adresse,
             is_staff=False, 
             is_admin=False,
+            is_active = is_active,
             **kwargs
         )
         user.set_password(password)
-        user.save()
+        user.save(using = self._db)
         return user
         
 
-    def create_staffuser(self, first_name, last_name,password,email, telephone, adresse):
+    def create_staffuser(self, first_name, last_name,password,email, telephone, adresse, is_active = True):
 
         user = self.create_user(
             first_name=first_name,
@@ -36,11 +37,12 @@ class UserManager(BaseUserManager):
             adresse=adresse,
             password=password,
             is_staff=True,
-            is_admin=False
+            is_admin=False,
+            is_active = is_active
         )
         return user
     
-    def create_superuser(self, first_name, last_name, email, password, telephone, adresse):
+    def create_superuser(self, first_name, last_name, email, password, telephone, adresse, is_active = True):
         user = self.create_user(
             first_name=first_name,
             last_name=last_name,
@@ -49,7 +51,8 @@ class UserManager(BaseUserManager):
             adresse=adresse,
             password=password,
             is_staff=True,
-            is_admin=True
+            is_admin=True,
+            is_active = is_active
         )
         return user
 
