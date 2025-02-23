@@ -1,19 +1,21 @@
 from rest_framework import serializers
 from .models import Utilisateur, Agriculteur, Acheteur, Produit, Commande, CommandeProduit, Paiement, Messagerie, Avis
 
+
+
 # Base Serializer for Utilisateur (used for create/update)
 class UtilisateurCreateUpdateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)  # Make password write-only
 
     class Meta:
         model = Utilisateur
-        fields = '__all__'
+        fields = ["first_name", "last_name", "email", "telephone", "adresse", "password"]
 
 # List Serializer for Utilisateur (used for listing)
 class UtilisateurListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Utilisateur
-        fields = '__all__'
+        fields = ["first_name", "last_name", "email", "telephone", "adresse"]
         depth = 1  # Apply depth=1 for nested relationships
 
 # Base Serializer for Agriculteur (used for create/update)
@@ -24,6 +26,7 @@ class AgriculteurCreateUpdateSerializer(serializers.ModelSerializer):
 
 # List Serializer for Agriculteur (used for listing)
 class AgriculteurListSerializer(serializers.ModelSerializer):
+    user = UtilisateurListSerializer()
     class Meta:
         model = Agriculteur
         fields = '__all__'
@@ -37,6 +40,7 @@ class AcheteurCreateUpdateSerializer(serializers.ModelSerializer):
 
 # List Serializer for Acheteur (used for listing)
 class AcheteurListSerializer(serializers.ModelSerializer):
+    user = UtilisateurListSerializer()
     class Meta:
         model = Acheteur
         fields = '__all__'
@@ -102,6 +106,8 @@ class MessagerieCreateUpdateSerializer(serializers.ModelSerializer):
 
 # List Serializer for Messagerie (used for listing)
 class MessagerieListSerializer(serializers.ModelSerializer):
+    expediteur = UtilisateurListSerializer()
+    destinataire = UtilisateurListSerializer()
     class Meta:
         model = Messagerie
         fields = '__all__'
